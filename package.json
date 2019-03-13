@@ -1,0 +1,62 @@
+{
+  "name": "react-component-stub-vsce",
+  "displayName": "Create react component stub",
+  "description": "Create react component stub by context menu or CMD + SHIFT + P",
+  "version": "0.0.1",
+  "publisher": "noru",
+  "engines": {
+    "vscode": "^1.12.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.createReactClassComponent",
+    "onCommand:extension.createReactSFC"
+  ],
+  "main": "./extension.ts",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.createReactClassComponent",
+        "title": "Add React Class Component"
+      },
+      {
+        "command": "extension.createReactSFC",
+        "title": "Add React Stateless Component"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "explorerResourceIsFolder",
+          "command": "extension.createReactClassComponent",
+          "group": "c_React@1"
+        },
+        {
+          "when": "explorerResourceIsFolder",
+          "command": "extension.createReactSFC",
+          "group": "c_React@2"
+        }
+      ]
+    }
+  },
+  "capabilities": {
+    "completionProvider": {
+      "resolveProvider": "true",
+      "triggerCharacters": [
+        "import "
+      ]
+    }
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/node": "^6.0.40",
+    "tslint": "^5.14.0",
+    "typescript": "^3.3.3333",
+    "vscode": "^1.0.0"
+  }
+}
