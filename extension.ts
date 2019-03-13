@@ -132,18 +132,17 @@ function scssTemplate(name) {
 
 async function createComponent(name, dir, isStateful) {
   try {
-    const component_name = name
-    const fileTsx = path.join(dir, component_name, 'index.tsx')
-    const fileScss = path.join(dir, component_name, 'index.scss')
+    const fileTsx = path.join(dir, name, 'index.tsx')
+    const fileScss = path.join(dir, name, 'index.scss')
 
-    mkDirByPathSync(path.join(dir, component_name))
+    mkDirByPathSync(path.join(dir, name))
 
     let tsxFile = await createFile(fileTsx)
-    await writeFile(tsxFile, isStateful ? ClassCompTemplate(component_name) : SFCTemplate(component_name))
+    await writeFile(tsxFile, isStateful ? ClassCompTemplate(name) : SFCTemplate(name))
     fs.close(tsxFile, e => e && console.error(e))
 
     let cssFile = await createFile(fileScss)
-    await writeFile(cssFile, scssTemplate(component_name))
+    await writeFile(cssFile, scssTemplate(name))
     fs.close(cssFile, e => e && console.error(e))
   } catch (err) {
     console.error(err)
