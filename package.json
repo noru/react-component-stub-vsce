@@ -2,6 +2,7 @@
   "name": "react-component-stub-vsce",
   "displayName": "Create react component stub",
   "description": "Create react component stub by context menu or CMD + SHIFT + P",
+  "repository": "https://github.com/noru/react-component-stub-vsce",
   "version": "0.0.1",
   "publisher": "noru",
   "engines": {
